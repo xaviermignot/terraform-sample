@@ -1,3 +1,5 @@
+# Terraform Sample
+
 This repository contains a basic sample on how I use Terraform to provision resources in Azure (a Function App in this case).  
 
 It also shows how I try to integrate Terraform in my personal projects, aka in a dedicated folder alongside the code and using Terraform Cloud with CLI workspaces.  
