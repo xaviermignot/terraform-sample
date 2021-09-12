@@ -2,8 +2,8 @@
 
 This repository contains a basic sample on how I use Terraform to provision resources in Azure (a Function App in this case).  
 
-It also shows how I try to integrate Terraform in my personal projects, aka in a dedicated folder alongside the code and using Terraform Cloud with CLI workspaces.  
-Even if the repo contains only Terraform code, the idea is to have everything related to a project in a single repo (code, tests, docs, IaC, pipelines, ...), that's why the tf files are in the `eng/tf` folder.
+You can use it straight away if you want to use Terraform's *local* backend (you'll just have to set 2 variables).  
+You can also use Terraform Cloud with a few more steps as detailed below.
 
 ## Running this using Terraform Cloud
 
