@@ -24,7 +24,7 @@ In addition to environment variables, you'll need two Terraform variables in you
 - The `location` variable contains the name of the Azure region you want to use, in `az cli` style such as `eastus`, `westus`, `westeurope`, etc.
 
 ### Add a `tf-backend.tf` file
-To establish the link between the cloned repo and the Terraform Cloud workspace, I use a `tf-backend.tf` file in the `eng/tf` folder with the following content:
+To establish the link between the cloned repo and the Terraform Cloud workspace, I use a `tf-backend.tf` file with the following content:
 ```hcl
 terraform {
   backend "remote" {
@@ -39,7 +39,7 @@ terraform {
 This file is git-ignored as it contains the name of the Terraform Cloud organization and workspace. Even if those are not secrets, I consider as good practice not to commit environment-related values like this in public repositories.
 
 ### Use Terraform CLI to manage your resources
-If you're still here, you should be able to authenticate (if not already done) with `terraform login` and initialize Terraform CLI with `terraform init`, all from the `eng/tf` folder from your terminal of choice.  
+If you're still here, you should be able to authenticate (if not already done) with `terraform login` and initialize Terraform CLI with `terraform init`, all from the root of the repo from your terminal of choice.  
 Then you can to use Terraform commands still from your terminal, except that everything will run in Terraform Cloud.
 
 Enjoy !
