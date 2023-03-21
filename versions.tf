@@ -9,6 +9,10 @@ terraform {
       version = ">= 2.0"
     }
   }
+
+  required_version = "~> 1.4.0"
+
+  cloud {}
 }
 
 provider "azurerm" {

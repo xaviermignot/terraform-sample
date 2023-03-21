@@ -2,8 +2,17 @@
 
 This repository contains a basic sample on how I use Terraform to provision resources in Azure (a Function App in this case).  
 
-You can use it straight away if you want to use Terraform's *local* backend (you'll just have to set 2 variables).  
-You can also use Terraform Cloud with a few more steps as detailed below.
+It is intended for use with Terraform Cloud but if you want to use Terraform's *local* backend you'll need to comment this line in the `versions.tf` file:
+```hcl
+terraform {
+  required_providers {
+    # ...
+  }
+
+  cloud {} # Comment this line to use local backend
+}
+```
+To use Terraform Cloud you need to follow a few more steps as detailed below.
 
 ## Running this using Terraform Cloud
 
@@ -23,19 +32,13 @@ In addition to environment variables, you'll need two Terraform variables in you
 - The `project` variable is used in the name of the Azure resources, choose something that will make them unique
 - The `location` variable contains the name of the Azure region you want to use, in `az cli` style such as `eastus`, `westus`, `westeurope`, etc.
 
-### Add a `tf-backend.tf` file
-To establish the link between the cloned repo and the Terraform Cloud workspace, I use a `tf-backend.tf` file with the following content:
-```hcl
-terraform {
-  backend "remote" {
-    organization = "<YOUR ORGANIZATION NAME>"
-
-    workspaces {
-      name = "<YOUR WORKSPACE NAME>"
-    }
-  }
-}
+### Set environment variables for Terraform Cloud
+To establish the link between the cloned repo and the Terraform Cloud workspace, you need to set 2 environment variables. This can be done by creating a `.env` like this:
+```shell
+export TF_CLOUD_ORGANIZATION="<YOUR ORGANIZATION NAME>"
+export TF_WORKSPACE="<YOUR WORKSPACE NAME>"
 ```
+And running `source .env` from your terminal.  
 This file is git-ignored as it contains the name of the Terraform Cloud organization and workspace. Even if those are not secrets, I consider as good practice not to commit environment-related values like this in public repositories.
 
 ### Use Terraform CLI to manage your resources
